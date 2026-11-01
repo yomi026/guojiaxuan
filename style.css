@@ -1,0 +1,124 @@
+/* style.css — one file, linked from every page */
+
+/* 1 · Text: set it once on body, everything inside inherits it */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1f2937;
+  background: #fbfaf7;
+}
+
+/* 2 · The content column */
+main {
+  max-width: 48rem;
+  margin: 0 auto;           /* centred */
+  padding: 1rem 2rem;
+}
+
+img {
+  max-width: 100%;          /* never wider than its box */
+  height: auto;
+}
+
+/* 3 · The homepage hero: one wide photo, cropped to fit */
+.hero img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;        /* fill the box, crop the rest — never squash */
+  border-radius: 10px;
+}
+
+/* 4 · The header: logo left, links centred, action right */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+nav .links {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0 auto;           /* pushes it to the centre */
+  padding: 0;
+  list-style: none;         /* no bullets */
+}
+
+nav a {
+  color: #334155;
+  text-decoration: none;    /* no underlines */
+}
+
+nav .logo {
+  font-weight: 800;
+  color: #c2410c;
+}
+
+nav .action {
+  border: 1.5px solid #0369a1;
+  border-radius: 99px;      /* a pill */
+  padding: .3em 1em;
+  color: #0369a1;
+}
+
+nav a:hover {
+  color: #c2410c;
+}
+
+/* 5 · One quote card — the box model, on all twenty at once */
+.quote {
+  max-width: 34rem;
+  margin-bottom: 1.5rem;    /* space outside */
+  padding: 1.1em 1.3em;     /* space inside */
+  background: #fff;
+  border: 1px solid #dcd8d0;
+  border-left: 4px solid #c2410c;
+  border-radius: 10px;
+}
+
+.quote blockquote {
+  margin: 0;                /* drop the browser's indent inside the card */
+}
+
+/* 6 · The site footer: by id, because every quote has a <footer> too */
+#site-footer {
+  padding: 1rem 2rem;
+  border-top: 1px solid #dcd8d0;
+  color: #6b7280;
+}
+
+/* 7 · Keyboard focus: visible on every interactive thing */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid #c2410c;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 8 · Narrow screens: the nav becomes two lines, photos stop being 20rem tall */
+@media (max-width: 768px) {
+  main { padding: 1rem 1.25rem 2rem; }
+  nav {
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+    padding: .9rem 1.25rem;
+  }
+  nav .links {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    gap: 1rem;
+    font-size: .95rem;
+  }
+  nav .action { margin-left: auto; order: 2; }
+  .hero img { height: auto; aspect-ratio: 16 / 10; }
+}
+
+@media (max-width: 520px) {
+  body { font-size: 15px; }
+  nav .links { font-size: .92rem; gap: .6rem; }
+  .hero img { aspect-ratio: 4 / 3; border-radius: 8px; }
+  .quote { padding: 1em 1.1em; }
+}
